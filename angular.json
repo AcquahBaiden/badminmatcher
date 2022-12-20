@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "badminmatcher"
+  "defaultProject": "badminmatcher",
+  "cli": {
+    "analytics": "d538e23e-4b6e-4045-85d1-82dfea61146e"
+  }
 }

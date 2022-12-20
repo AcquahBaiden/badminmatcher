@@ -44,3 +44,11 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+notes.txt
+src/environments/environment.prod.ts
+/public
+package-lock.json
+.firebaserc
+.firebase/
+
