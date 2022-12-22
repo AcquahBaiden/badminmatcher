@@ -7,27 +7,29 @@
 .container{
     width: 100%;
     min-height: 100%;
+    max-width: 1440px;
 }
 
-/* Round - border radius foor all elements */
+/* Round - border radius and box shadow for all elements */
 .round{
     border-radius: 20px;
+    box-shadow: 4px 4px 10%;
 }
 
 /* Shadow - drop shadow for all components */
-.shadow{
-    box-shadow: 4px 4px 10%;
-}
+
 
 .default{
     border-radius: 20px;
     background-color: var(--badmatch-primary);
-}
-
-.btn.default{
     color: #fff;
     border: 1px solid var(--badmatch-primary)
 }
+
+/* .btn.default{
+    color: #fff;
+    border: 1px solid var(--badmatch-primary)
+} */
 
 a{
     text-decoration: none;

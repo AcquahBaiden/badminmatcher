@@ -1,4 +1,12 @@
+.head-wrapper{
+    display: flex;
+    justify-content: space-around;
+}
 .bottom-wrapper{
     display: flex;
     justify-content: flex-end;
+}
+#score-input-wrapper{
+    display: flex;
+    align-items: center;
 }
