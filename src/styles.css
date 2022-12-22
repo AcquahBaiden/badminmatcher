@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+
+*{
+    --badmatch-primary:#7BAF76;
+  }
+/* Full page wrapper */
+.container{
+    width: 100%;
+    min-height: 100%;
+}
+
+/* Round - border radius foor all elements */
+.round{
+    border-radius: 20px;
+}
+
+/* Shadow - drop shadow for all components */
+.shadow{
+    box-shadow: 4px 4px 10%;
+}
+
+.default{
+    border-radius: 20px;
+    background-color: var(--badmatch-primary);
+}
+
+.btn.default{
+    color: #fff;
+    border: 1px solid var(--badmatch-primary)
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+button:hover{
+    transform: scale(1.01,1.01);
+    cursor: pointer;
+}
+
+.btn-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    padding: 88px;
+}
+.btn{
+    padding: 20px 44px;
+    font-size: 24px;
+}
