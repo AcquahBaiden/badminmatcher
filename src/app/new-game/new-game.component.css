@@ -11,6 +11,21 @@
     align-items: center;
 }
 
-.player-line{
+#player-line{
     display: flex;
+}
+#player-name{
+    width: 500px;
+}
+#player-ranking{
+    margin-left: 58px;
+    margin-right: 48px;
+}
+#add-btn{
+    border-radius:20px;
+    border: none;
+    box-shadow: var(--badmatch-box-shadow);
+    border: 2px solid var(--badmatch-primary);
+    color: var(--badmatch-primary);
+    font-size: 16px;
 }

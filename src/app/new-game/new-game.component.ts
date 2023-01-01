@@ -7,7 +7,7 @@ import { Player } from '../interfaces/player.interface';
   styleUrls: ['./new-game.component.css']
 })
 export class NewGameComponent implements OnInit {
-  players: Player [] = [{name:'',ranking:0}]
+  players: Player [] = []
   constructor() { }
 
   ngOnInit(): void {

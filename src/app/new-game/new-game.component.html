@@ -1,22 +1,33 @@
 <div class="container">
     <div class="head-wrapper">
-        <textarea name="" id="" cols="30" rows="10" class="defaut round"></textarea>
+        <textarea name="" id="" cols="30" rows="5" class="primary"
+        placeholder="Game name"
+        ></textarea>
         <div id="score-input-wrapper">
-            <input type="text" class="default round shadow">
+            <input type="text" class="primary"
+            placeholder="Number of courts">
         </div>
     </div>
     <div class="players-wrapper">
-        <h2>Add players</h2>
+        <h2>Players</h2>
         <!-- Replace each line with component -->
-        <div class="player-line" *ngFor="let player of players">
-            <input type="text" placeholder="Player name">
-            <input type="number" placeholder="Ranking">
-            <button (click)="onAddPlayer()"> + </button>
+        <table *ngIf="players.length>0">
+            <tr id="player-line" *ngFor="let player of players">
+                <td> {{player.name}} </td>
+                <td> {{player.ranking}} </td>
+            </tr>
+        </table>
+        <div id="add-container">
+            <form id="player-line-form" onsubmit="onAddPlayer()">
+                <input type="text" placeholder="Player name" class="primary" id="player-name">
+                <input type="number" placeholder="Ranking" class="primary" id="player-ranking">
+                <button (click)="onAddPlayer()" id="add-btn" type="button"> + </button>
+            </form>
         </div>
     </div>
     <div class="bottom-wrapper">
         <div class="btn-wrapper">
-            <button class="btn default round shadow">
+            <button class="btn default round">
                 <a routerLink="/new">
                     Start game
                 </a>
