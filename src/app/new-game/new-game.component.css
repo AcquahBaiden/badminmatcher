@@ -1,3 +1,11 @@
+.container{
+    position: relative;
+    padding-top: 75px;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 700px;
+}
 .head-wrapper{
     display: flex;
     justify-content: space-around;
@@ -28,4 +36,36 @@
     border: 2px solid var(--badmatch-primary);
     color: var(--badmatch-primary);
     font-size: 16px;
+}
+#bottom-wrapper{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+textarea{
+    width: 500px;
+    display: flex;
+    align-items: center;
+}
+textarea::placeholder {
+    transform: translateY(30px)
+}
+.card{
+    box-shadow: var(--badmatch-box-shadow);
+    border-radius: var(--badmatch-border-radius);
+    margin-top: 112px;
+    margin-bottom: 73px;
+    padding-top:12px;
+    padding-left: 26px;
+}
+
+tr{
+    margin-bottom: 20px;
+}
+td.name{
+    margin-left: 15px;
+    width: 510px;
+}
+td.ranking{
+    margin-left: 15px;
 }

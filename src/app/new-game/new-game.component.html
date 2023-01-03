@@ -9,14 +9,16 @@
         </div>
     </div>
     <div class="players-wrapper">
-        <h2>Players</h2>
         <!-- Replace each line with component -->
-        <table *ngIf="players.length>0">
-            <tr id="player-line" *ngFor="let player of players">
-                <td> {{player.name}} </td>
-                <td> {{player.ranking}} </td>
-            </tr>
-        </table>
+        <div class="card">
+            <table *ngIf="players.length>0">
+                <tr id="player-line" *ngFor="let player of players; index as i">
+                    <td> {{i+1}}. </td>
+                    <td class="name"> {{player.name}} </td>
+                    <td class="ranking"> {{player.ranking}} </td>
+                </tr>
+            </table>
+        </div>
         <div id="add-container">
             <form id="player-line-form" onsubmit="onAddPlayer()">
                 <input type="text" placeholder="Player name" class="primary" id="player-name">
@@ -25,7 +27,7 @@
             </form>
         </div>
     </div>
-    <div class="bottom-wrapper">
+    <div id="bottom-wrapper">
         <div class="btn-wrapper">
             <button class="btn default round">
                 <a routerLink="/new">
