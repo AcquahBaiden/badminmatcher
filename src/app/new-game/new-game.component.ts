@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Player } from '../interfaces/player.interface';
 
 @Component({
@@ -13,12 +14,16 @@ export class NewGameComponent implements OnInit {
     {name:"Sarah Snow", ranking:120},
     {name:"Philip Water", ranking:330},
   ]
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
   onAddPlayer(){
     this.players.push({name:'', ranking:0})
+  }
+
+  onStartGame(){
+    this.router.navigate(['/board'])
   }
 
 }
