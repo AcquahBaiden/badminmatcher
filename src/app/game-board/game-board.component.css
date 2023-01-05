@@ -1,5 +1,28 @@
+.container{
+    position: relative;
+    padding-top: 75px;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 700px;
+    justify-content: space-between;
+    align-items: center;
 
-.team-one{
-    /* display: flex; */
+    min-height: 110vh;
+}
+.court{
+    display: flex;
+    margin-bottom: 82px;
 
+}
+.card{
+
+}
+
+.card.right{
+    margin-left: 50px;
+    padding-left: 20px;
+}
+.card.left{
+    padding-right:20px;
 }
