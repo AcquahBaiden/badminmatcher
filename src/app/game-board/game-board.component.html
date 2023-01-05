@@ -1,8 +1,25 @@
-<div class="container">
+<div class="container" style="display: flex;">
     <div id="courts-wrapper">
-
+        <div *ngFor="let court of courts">
+            <div class="team-one">
+                <!-- {{court['team_one']|json}} -->
+                <!-- {{court.team_one|json}} -->
+                <div *ngFor="let player of court.team_one.players; index as i">
+                    <div> {{i+1}}. {{player}}</div> <br>
+                </div>
+                <hr>
+                <div *ngFor="let player of court.team_one.players; index as i">
+                    <div> {{i+1}}. {{player}}</div> <br>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="offcourt-wrapper">
-
+        <div class="card">
+            <h2>Offcourt</h2>
+            <div *ngFor="let player of offcourt; index as i">
+                {{i+1}}. {{player.name}}
+            </div>
+        </div>
     </div>
 </div>
