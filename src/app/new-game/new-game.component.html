@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="head-wrapper">
+        <textarea name="" id="" cols="30" rows="5" class="primary"
+        placeholder="Game name"
+        ></textarea>
+        <div id="score-input-wrapper">
+            <input type="text" class="primary"
+            placeholder="Number of courts">
+        </div>
+    </div>
+    <div class="players-wrapper">
+        <!-- Replace each line with component -->
+        <div class="card">
+            <table *ngIf="players.length>0">
+                <tr id="player-line" *ngFor="let player of players; index as i">
+                    <td> {{i+1}}. </td>
+                    <td class="name"> {{player.name}} </td>
+                    <td class="ranking"> {{player.ranking}} </td>
+                </tr>
+            </table>
+        </div>
+        <div id="add-container">
+            <form id="player-line-form" onsubmit="onAddPlayer()">
+                <input type="text" placeholder="Player name" class="primary" id="player-name">
+                <input type="number" placeholder="Ranking" class="primary" id="player-ranking">
+                <button (click)="onAddPlayer()" id="add-btn" type="button"> + </button>
+            </form>
+        </div>
+    </div>
+    <div id="bottom-wrapper">
+        <div class="btn-wrapper">
+            <button class="btn default round">
+                <a routerLink="/board">
+                    Start game
+                </a>
+            </button>
+        </div>
+    </div>
+</div>
