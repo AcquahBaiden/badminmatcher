@@ -26,3 +26,9 @@
 .card.left{
     padding-right:20px;
 }
+
+.score-wrapper{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}

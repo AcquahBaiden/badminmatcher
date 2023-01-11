@@ -1,19 +1,30 @@
 <div class="container" style="display: flex;">
     <div id="courts-wrapper">
-        <div *ngFor="let court of courts" class="court">
-            <div class="card left">
-                <div class="card-body">
-                    <div *ngFor="let player of court.team_one.players; index as i">
-                        <div>{{player.name}}</div> <br>
+        <div *ngFor="let court of courts; index as i">
+            <h2>Court {{i+1}}</h2>
+            <div class="court">
+                <div class="card left">
+                    <div class="card-body" style="display: flex;">
+                        <div class="players-wrapper">
+                            <div *ngFor="let player of court.team_one.players; index as j">
+                                <div>{{player.name}}</div> <br>
+                              </div>
+                        </div>
+                        <div class="score-wrapper">
+                            <input type="number">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card right">
-                <div class="card-body">
-                    <div *ngFor="let player of court.team_one.players; index as i">
-                        <div>{{player.name}}</div> <br>
-                        <div>{{player.name}}</div> <br>
-                        <div>{{player.name}}</div> <br>
+                <div class="card right">
+                    <div class="card-body" style="display: flex;">
+                        <div class="players-wrapper">
+                            <div *ngFor="let player of court.team_two.players; index as k">
+                                <div>{{player.name}}</div> <br>
+                            </div>
+                        </div>
+                        <div class="score-wrapper">
+                            <input type="number">
+                        </div>
                     </div>
                 </div>
             </div>
