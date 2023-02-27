@@ -45,30 +45,28 @@
         </div>
     </div>
 </div> -->
-<div style="display: flex;">
-    <div cdkDropListGroup>
-        <div class="example-container">
-          <h2>On court</h2>
-      
-          <div
-            cdkDropList
-            [cdkDropListData]="onCourt"
-            class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of onCourt" cdkDrag>{{item}}</div>
-          </div>
-        </div>
-      
-        <div class="example-container">
-          <h2>Off court</h2>
-      
-          <div
-            cdkDropList
-            [cdkDropListData]="offCourt"
-            class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of offCourt" cdkDrag>{{item}}</div>
-          </div>
-        </div>
+<div cdkDropListGroup style="display: flex;">
+    <div class="example-container">
+      <h2>On court</h2>
+  
+      <div
+        cdkDropList
+        [cdkDropListData]="onCourt"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of onCourt" cdkDrag>{{item}}</div>
       </div>
-</div>
+    </div>
+  
+    <div class="example-container">
+      <h2>Off court</h2>
+  
+      <div
+        cdkDropList
+        [cdkDropListData]="offCourt"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of offCourt" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+  </div>
