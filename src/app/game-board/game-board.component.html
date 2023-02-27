@@ -1,4 +1,4 @@
-<div class="container" style="display: flex;">
+<!-- <div class="container" style="display: flex;">
     <div id="courts-wrapper">
         <div *ngFor="let court of courts; index as i" cdkDropList #courtsList="cdkDropList" [cdkDropListData]="courts"
             [cdkDropListConnectedTo]="[offCourtsList]" (cdkDropListDropped)="drop($event)">
@@ -44,4 +44,31 @@
            </div>
         </div>
     </div>
+</div> -->
+<div style="display: flex;">
+    <div cdkDropListGroup>
+        <div class="example-container">
+          <h2>On court</h2>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="onCourt"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of onCourt" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      
+        <div class="example-container">
+          <h2>Off court</h2>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="offCourt"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of offCourt" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      </div>
 </div>
