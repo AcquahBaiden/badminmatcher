@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AppService } from '../app.service';
 import { Player } from '../interfaces/player.interface';
 
 @Component({
@@ -14,7 +15,7 @@ export class NewGameComponent implements OnInit {
     {name:"Sarah Snow", ranking:120},
     {name:"Philip Water", ranking:330},
   ]
-  constructor(private router: Router) { }
+  constructor(private router: Router, private appService: AppService, private params: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -22,8 +23,14 @@ export class NewGameComponent implements OnInit {
     this.players.push({name:'', ranking:0})
   }
 
-  onStartGame(){
-    this.router.navigate(['/board'])
+  async onStartGame(){
+    const new_game_id = await this.appService.createNewGame()
+    if(new_game_id){
+      this.router.navigate(['/board'], {queryParams: {'id': '12345'}})
+    }else{
+
+    }
+    
   }
 
 }

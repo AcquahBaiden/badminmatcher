@@ -9,6 +9,7 @@ export class AppService {
 
   async createNewGame(){
     const id = await this.generateKey()
+    return id
   }
 
   generateKey(){
