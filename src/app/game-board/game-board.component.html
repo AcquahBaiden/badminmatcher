@@ -1,12 +1,13 @@
-<div class="container" style="display: flex;">
+<!-- <div class="container" style="display: flex;">
     <div id="courts-wrapper">
-        <div *ngFor="let court of courts; index as i">
+        <div *ngFor="let court of courts; index as i" cdkDropList #courtsList="cdkDropList" [cdkDropListData]="courts"
+            [cdkDropListConnectedTo]="[offCourtsList]" (cdkDropListDropped)="drop($event)">
             <h2>Court {{i+1}}</h2>
             <div class="court">
                 <div class="card left">
                     <div class="card-body" style="display: flex;">
                         <div class="players-wrapper">
-                            <div *ngFor="let player of court.team_one.players; index as j">
+                            <div *ngFor="let player of court.team_one.players; index as j" cdkDrag>
                                 <div>{{player.name}}</div> <br>
                               </div>
                         </div>
@@ -18,7 +19,7 @@
                 <div class="card right">
                     <div class="card-body" style="display: flex;">
                         <div class="players-wrapper">
-                            <div *ngFor="let player of court.team_two.players; index as k">
+                            <div *ngFor="let player of court.team_two.players; index as k" cdkDrag>
                                 <div>{{player.name}}</div> <br>
                             </div>
                         </div>
@@ -33,13 +34,39 @@
     <div id="offcourt-wrapper">
         <div class="card">
            <div class="card-body">
-            <div class="card-title">
+            <div class="card-title" cdkDropList #offCourtsList="cdkDropList" [cdkDropListData]="offcourt"
+            [cdkDropListConnectedTo]="[courtsList]" (cdkDropListDropped)="drop($event)">
                 <h2>Offcourt</h2>
             </div>
-            <div *ngFor="let player of offcourt; index as i">
+            <div *ngFor="let player of offcourt; index as i" cdkDrag>
                 {{i+1}}. {{player.name}}
             </div>
            </div>
         </div>
     </div>
-</div>
+</div> -->
+<div cdkDropListGroup style="display: flex;">
+    <div class="example-container">
+      <h2>On court</h2>
+  
+      <div
+        cdkDropList
+        [cdkDropListData]="onCourt"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of onCourt" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+  
+    <div class="example-container">
+      <h2>Off court</h2>
+  
+      <div
+        cdkDropList
+        [cdkDropListData]="offCourt"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of offCourt" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+  </div>
