@@ -26,7 +26,7 @@ export class NewGameComponent implements OnInit {
   async onStartGame(){
     const new_game_id = await this.appService.createNewGame()
     if(new_game_id){
-      this.router.navigate(['/board'], {queryParams: {'id': '12345'}})
+      this.router.navigate(['/board'], {queryParams: {id: '12345'}})
     }else{
 
     }

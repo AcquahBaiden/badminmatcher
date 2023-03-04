@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Court } from '../interfaces/court.interface'
 import { Player } from '../interfaces/player.interface';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game-board',
@@ -42,9 +43,15 @@ export class GameBoardComponent implements OnInit {
   //   }
   // ]
   // offcourt: Player[] = [{name:'Man NotHot', ranking: 10},{'name':'JAne Reeding', ranking:30}]
-  // constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params=>{
+      console.log(params)
+    })
+    this.route.queryParams.subscribe(params=>{
+      console.log(params)
+    })
   }
 
   // drop(event: CdkDragDrop<string[]>) {
