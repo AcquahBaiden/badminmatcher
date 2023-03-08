@@ -47,9 +47,15 @@ Thumbs.db
 
 notes.txt
 src/environments/environment.prod.ts
+src/environments/environment.ts
 /public
 package-lock.json
 .firebaserc
 .firebase/
 .github/workflows
 .editorconfig
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json

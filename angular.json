@@ -116,6 +116,16 @@
               "devServerTarget": "badminmatcher:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "badminmatcher:build:production",
+            "firebaseProject": "badminmatcher",
+            "firebaseHostingSite": "badminmatcher"
+          }
         }
       }
     }
