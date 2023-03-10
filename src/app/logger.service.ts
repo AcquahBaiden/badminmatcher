@@ -14,6 +14,6 @@ export class LoggerService {
   }
 
   error(info: LogError): void {
-
+    console.log(info)
   }
 }
