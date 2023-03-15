@@ -11,6 +11,7 @@ export class LoggerService {
   
   success(info: LogSuccess): void {
     console.log(info)
+    console.log(info)
   }
 
   error(info: LogError): void {
