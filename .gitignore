@@ -57,5 +57,8 @@ package-lock.json
 
 # Firebase
 .firebase
+database.rules.json
 *-debug.log
 .runtimeconfig.json
+
+.angular
