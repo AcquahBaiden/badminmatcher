@@ -8,31 +8,28 @@ import { LoggerService } from '../logger.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent{
 
   constructor(private appService: AppService, private router: Router, 
     private log: LoggerService) { }
 
-  ngOnInit(): void {
-  }
   async onStartGame(){
-    console.log('clicked')
-    try {
-      const new_game_id = await this.appService.createNewGame()
-        this.log.success({
-          message: "Created new game",
-          extras: {
-            id: new_game_id
-          }
-        })
-    } catch (error) {
+    this.appService.createNewGame().then((id:string)=>{
+      this.log.success({
+        message: "Created new game",
+        extras: {
+          id
+        }
+      })
+      console.log('navigating')
+      this.router.navigate(['new'], {queryParams:{
+        id
+      }, skipLocationChange: true})
+    }).catch(()=>{
       this.log.error({
         message: "Error creating new game push id",
       })
-      return
-    }
-    
-    
+    })
   }
 
 }

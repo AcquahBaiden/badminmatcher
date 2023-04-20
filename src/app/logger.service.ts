@@ -10,12 +10,10 @@ export class LoggerService {
   constructor() { }
   
   success(info: LogSuccess): void {
-    console.log(info)
-    console.log(info)
-    console.log(info)
+    console.log(info.message, info.extras)
   }
 
   error(info: LogError): void {
-    console.log(info)
+    console.log(info.message, info.extras)
   }
 }
