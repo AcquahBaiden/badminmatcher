@@ -1,8 +1,8 @@
 import { Injectable, isDevMode } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { environment as dev } from 'src/environments/environment';
 import { environment as prod } from 'src/environments/environment.prod';
+import { AuthService } from './auth.service';
 import { LoggerService } from './logger.service';
 
 @Injectable({
@@ -10,13 +10,14 @@ import { LoggerService } from './logger.service';
 })
 export class AppService {
 
-  constructor(private database: AngularFireDatabase, 
-    private auth: AngularFireAuth,
-    private log: LoggerService) { }
+  constructor(private database: AngularFireDatabase,
+    private log: LoggerService,
+    private auth: AuthService) { }
+    currentGame:string = null
 
   async createNewGame(){
     const pushId = this.database.createPushId();
-    const user = await this._user()
+    const user = await this.auth.user()
     let path:string = ''
     if (user){
       path = user.uid
@@ -34,30 +35,7 @@ export class AppService {
         extras: error
       })
     }
+    this.currentGame = pushId
     return pushId
-  }
-
-  async getUserId(){
-    /**
-     * returns userId or public id when no user
-     */
-    //get user id
-    // or return defined createPusId path for environment
-    const user = await this._user()
-    if(user){
-      return user
-    }
-    // return isDevMode() ? dev.userId: prod.userId
-    return 'asdf'
-  }
-
-  async _user(){
-    return this.auth.currentUser
-    // const user = await this.auth.currentUser
-    // if(user){
-    //   return user.uid
-    // }else{
-    //   return null
-    // }
   }
 }
