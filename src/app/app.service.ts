@@ -3,6 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { environment as dev } from 'src/environments/environment';
 import { environment as prod } from 'src/environments/environment.prod';
 import { AuthService } from './auth.service';
+import { Player } from './interfaces/player.interface';
 import { LoggerService } from './logger.service';
 
 @Injectable({
@@ -37,5 +38,19 @@ export class AppService {
     }
     this.currentGame = pushId
     return pushId
+  }
+
+  async addPlayerToGame(game_id: string, player: Player){
+    // check if the ids are the same
+    const user = await this.auth.user()
+    let path:string = ''
+    if (user){
+      path = user.uid
+    }else{
+      path = isDevMode() ? dev.userId: prod.userId
+    }
+    return this.database.list(path + '/players/').push(
+      player
+    )
   }
 }

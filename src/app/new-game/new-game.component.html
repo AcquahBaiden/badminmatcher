@@ -20,9 +20,9 @@
             </table>
         </div>
         <div id="add-container">
-            <form id="player-line-form" onsubmit="onAddPlayer()">
-                <input type="text" placeholder="Player name" class="primary" id="player-name">
-                <input type="number" placeholder="Ranking" class="primary" id="player-ranking">
+            <form id="player-line-form" onsubmit="onAddPlayer()" [formGroup]="newPlayerForm">
+                <input type="text" placeholder="Player name" class="primary" id="player-name" formControlName="name">
+                <input type="number" placeholder="Ranking" class="primary" id="player-ranking" formControlName="ranking">
                 <button (click)="onAddPlayer()" id="add-btn" type="button"> + </button>
             </form>
         </div>

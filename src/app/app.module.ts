@@ -14,6 +14,7 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireModule } from '@angular/fire/compat';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     DragDropModule,
+    ReactiveFormsModule,
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideDatabase(() => getDatabase()),
