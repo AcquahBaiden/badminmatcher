@@ -5,6 +5,7 @@ import { environment as prod } from 'src/environments/environment.prod';
 import { AuthService } from './auth.service';
 import { Player } from './interfaces/player.interface';
 import { LoggerService } from './logger.service';
+import { LoggerService } from './logger.service';
 
 @Injectable({
   providedIn: 'root'
