@@ -1,10 +1,12 @@
 import { Injectable, isDevMode } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { objectVal } from '@angular/fire/database';
+import { ref } from 'firebase/database';
+import { map } from 'rxjs';
 import { environment as dev } from 'src/environments/environment';
 import { environment as prod } from 'src/environments/environment.prod';
 import { AuthService } from './auth.service';
 import { Player } from './interfaces/player.interface';
-import { LoggerService } from './logger.service';
 import { LoggerService } from './logger.service';
 
 @Injectable({
@@ -53,5 +55,16 @@ export class AppService {
     return this.database.list(path + '/players/').push(
       player
     )
+  }
+
+  getGame(gameId:string){
+    this.database.object('games/'+gameId).valueChanges()
+    .pipe(
+      map((gamesRes)=>{
+        return gamesRes
+      })
+    )
+
+    
   }
 }

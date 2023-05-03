@@ -22,9 +22,11 @@ export class HomeComponent{
         }
       })
       console.log('navigating')
-      this.router.navigate(['new'], {queryParams:{
-        id
-      }, skipLocationChange: true})
+      this.router.navigate([`new/${id}`])
+      // this.router.navigate(['new'], {queryParams:{
+        // id
+      // }, skipLocationChange: true}) // prevents proper page navigation
+      // }})
     }).catch(()=>{
       this.log.error({
         message: "Error creating new game push id",
