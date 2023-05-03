@@ -2,10 +2,11 @@ import { Injectable, isDevMode } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { objectVal } from '@angular/fire/database';
 import { ref } from 'firebase/database';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment as dev } from 'src/environments/environment';
 import { environment as prod } from 'src/environments/environment.prod';
 import { AuthService } from './auth.service';
+import { Game } from './interfaces/game.interface';
 import { Player } from './interfaces/player.interface';
 import { LoggerService } from './logger.service';
 
@@ -57,14 +58,9 @@ export class AppService {
     )
   }
 
-  getGame(gameId:string){
-    this.database.object('games/'+gameId).valueChanges()
-    .pipe(
-      map((gamesRes)=>{
-        return gamesRes
-      })
-    )
-
-    
+  getGame(gameId:string):Observable<Game>{
+    return this.database.object('public/'+gameId).valueChanges().pipe(
+      map((here:Game) => here
+    ))
   }
 }

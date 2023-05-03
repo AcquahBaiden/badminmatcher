@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from '../app.service';
+import { Game } from '../interfaces/game.interface';
 import { Player } from '../interfaces/player.interface';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -11,6 +13,7 @@ import { Player } from '../interfaces/player.interface';
   styleUrls: ['./new-game.component.css']
 })
 export class NewGameComponent implements OnInit {
+  game: Game
   players: Player [] = [
     {name:"John Smith", ranking:23},
     {name:"Jack Ryan", ranking:70},
@@ -28,9 +31,15 @@ export class NewGameComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params)=>{
-      this.gameId = params["id"]
-    })
+    this.route.paramMap.subscribe(paramMap=>{
+      this.gameId = paramMap.get('gameId')
+      this.appService.getGame(this.gameId)
+      .subscribe((gameRes)=>{
+        this.game = gameRes
+        console.log('gameRes:', this.game)
+      })
+    }
+    )
   }
   onAddPlayer(){
     this.players.push({name:'', ranking:0})
