@@ -44,7 +44,7 @@ export class AppService {
     return pushId
   }
 
-  async addPlayerToGame(game_id: string, player: Player){
+  async addPlayerToGame(gameId: string, player: Player){
     // check if the ids are the same
     const user = await this.auth.user()
     let path:string = ''
@@ -53,7 +53,7 @@ export class AppService {
     }else{
       path = isDevMode() ? dev.userId: prod.userId
     }
-    return this.database.list(path + '/players/').push(
+    return this.database.list(path +'/'+ gameId +'/players/').push(
       player
     )
   }

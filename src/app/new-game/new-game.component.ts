@@ -49,13 +49,13 @@ export class NewGameComponent implements OnInit {
       name, ranking
     }
     console.log(this.newPlayerForm.value)
-    // this._addPlayer(player)
-    // .then(()=>{
-    //   // update form
-    // })
-    // .catch(()=>{
-    //   //show error
-    // })
+    this._addPlayer(player)
+    .then(()=>{
+      // update form
+    })
+    .catch(()=>{
+      //show error
+    })
   }
 
   private _addPlayer(player: Player){
