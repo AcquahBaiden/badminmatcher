@@ -63,4 +63,18 @@ export class AppService {
       map((here:Game) => here
     ))
   }
+
+  async updateGameInfo(name: string, numCourts: number, gameId:string){
+    const user = await this.auth.user()
+    let path:string = ''
+    if (user){
+      path = user.uid
+    }else{
+      path = isDevMode() ? dev.userId: prod.userId
+    }
+    const updates = []
+    updates[path+'/'+gameId+'/name/'] = name
+    updates[path+'/'+gameId+'/numCourts/'] = numCourts
+    return await this.database.database.ref().update(updates)
+  }
 }

@@ -1,17 +1,16 @@
 <div class="container">
-    <div class="head-wrapper">
+    <div class="head-wrapper" [formGroup]="gameInfo">
         <textarea name="" id="" cols="30" rows="5" class="primary"
-        placeholder="Game name"
+        placeholder="Game name" formControlName="title"
         ></textarea>
         <div id="score-input-wrapper">
             <input type="text" class="primary"
-            placeholder="Number of courts">
+            placeholder="Number of courts" formControlName="numCourts">
         </div>
     </div>
     <div class="players-wrapper">
         <!-- Replace each line with component -->
         <div class="card">
-            {{ players | json}}
             <table>
                 <tr id="player-line" *ngFor="let player of players; index as i">
                     <td> {{i+1}}. </td>
@@ -28,13 +27,14 @@
             </form>
         </div>
     </div>
-    <!-- <div id="bottom-wrapper">
+    <div id="bottom-wrapper">
         <div class="btn-wrapper">
-            <button class="btn default round">
-                <a routerLink="/board">
-                    Start game
-                </a>
+            <button class="btn default round" (click)="onStartGame()">
+                Start game
+                <!-- <a routerLink="/board">
+                    
+                </a> -->
             </button>
         </div>
-    </div> -->
+    </div>
 </div>

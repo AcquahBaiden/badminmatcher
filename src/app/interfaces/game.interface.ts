@@ -4,7 +4,8 @@ import { User } from "./user.interface"
 
 export interface Game{
     state: string
-    court: Court
+    name: string
+    numCourt: Court
     creator?: User
     players: Player[]
     scores: {

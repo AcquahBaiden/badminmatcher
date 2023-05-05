@@ -14,13 +14,17 @@ import { map } from 'rxjs/operators';
 })
 export class NewGameComponent implements OnInit {
   game: Game
-  players: Player [] = [
-  ]
+  players: Player [] = []
   gameId:string = null
   newPlayerForm = new FormGroup({
     name: new FormControl(''),
     ranking: new FormControl('')
   })
+  gameInfo = new FormGroup({
+    title: new FormControl(''),
+    numCourts: new FormControl('')
+  })
+
   constructor(private router: Router, 
     private appService: AppService, 
     private route: ActivatedRoute,
@@ -33,6 +37,7 @@ export class NewGameComponent implements OnInit {
       .subscribe((gameRes)=>{
         this.game = gameRes
         const players = gameRes.players
+        this.players = []
         for(const key in players){
           if(players.hasOwnProperty(key)){
             this.players.push({ ...players[key]})
@@ -61,5 +66,16 @@ export class NewGameComponent implements OnInit {
 
   private _addPlayer(player: Player){
    return this.appService.addPlayerToGame(this.gameId, player)
+  }
+
+  onStartGame(){
+
+    this.appService.updateGameInfo(this.gameInfo.value.title, parseInt(this.gameInfo.value.numCourts), this.gameId)
+    .then(()=>{
+      this.router.navigate([`/board/${this.gameId}`])
+    })
+    .catch(()=>{
+
+    })
   }
 }
