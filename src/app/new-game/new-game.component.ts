@@ -15,10 +15,6 @@ import { map } from 'rxjs/operators';
 export class NewGameComponent implements OnInit {
   game: Game
   players: Player [] = [
-    {name:"John Smith", ranking:23},
-    {name:"Jack Ryan", ranking:70},
-    {name:"Sarah Snow", ranking:120},
-    {name:"Philip Water", ranking:330},
   ]
   gameId:string = null
   newPlayerForm = new FormGroup({
@@ -36,19 +32,24 @@ export class NewGameComponent implements OnInit {
       this.appService.getGame(this.gameId)
       .subscribe((gameRes)=>{
         this.game = gameRes
-        console.log('gameRes:', this.game)
+        const players = gameRes.players
+        for(const key in players){
+          if(players.hasOwnProperty(key)){
+            this.players.push({ ...players[key]})
+          }
+        }
+        
       })
     }
     )
   }
   onAddPlayer(){
     this.players.push({name:'', ranking:0})
-    const name = 'Jone'
-    const ranking = 43
     const player: Player = {
-      name, ranking
+      "name": this.newPlayerForm.value.name, 
+      "ranking": parseInt(this.newPlayerForm.value.ranking)
     }
-    console.log(this.newPlayerForm.value)
+    console.log()
     this._addPlayer(player)
     .then(()=>{
       // update form
