@@ -3,6 +3,8 @@ import { Court } from '../interfaces/court.interface'
 import { Player } from '../interfaces/player.interface';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { ActivatedRoute } from '@angular/router';
+import { AppService } from '../app.service';
+import { Game } from '../interfaces/game.interface';
 
 @Component({
   selector: 'app-game-board',
@@ -10,6 +12,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./game-board.component.css']
 })
 export class GameBoardComponent implements OnInit {
+  gameId:string
+  game: Game
+  players: Player[]
+  offCourt: Player[]
+  //onCourt: Player[]
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
   done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
@@ -58,15 +65,25 @@ export class GameBoardComponent implements OnInit {
   //   }
   // ]
   // offcourt: Player[] = [{name:'Man NotHot', ranking: 10},{'name':'JAne Reeding', ranking:30}]
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private appService: AppService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params=>{
-      console.log(params)
-    })
-    this.route.queryParams.subscribe(params=>{
-      console.log(params)
-    })
+    this.route.paramMap.subscribe(paramMap=>{
+      this.gameId = paramMap.get('gameId')
+      this.appService.getGame(this.gameId)
+      .subscribe((gameRes)=>{
+        this.game = gameRes
+        const players = gameRes.players
+        this.players = []
+        for(const key in players){
+          if(players.hasOwnProperty(key)){
+            this.players.push({ ...players[key]})
+            // this.offCourt.push({...players[key]})
+          }
+        }
+      })
+    }
+    )
   }
 
   onCourt = [
@@ -76,11 +93,11 @@ export class GameBoardComponent implements OnInit {
     'Nathan Cruise'
   ];
 
-  offCourt = [
-    'Iron Man',
-    'Super man',
-    'Black Widow',
-  ];
+  // offCourt = [
+  //   'Iron Man',
+  //   'Super man',
+  //   'Black Widow',
+  // ];
 
   drop_old(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
