@@ -54,7 +54,7 @@
         [cdkDropListData]="onCourt"
         class="example-list"
         (cdkDropListDropped)="drop_old($event)">
-        <div class="example-box" *ngFor="let item of onCourt" cdkDrag>{{item}}</div>
+        <div class="example-box" *ngFor="let item of onCourt" cdkDrag>{{item | json}}</div>
       </div>
     </div>
   
@@ -66,7 +66,7 @@
         [cdkDropListData]="offCourt"
         class="example-list"
         (cdkDropListDropped)="drop_old($event)">
-        <div class="example-box" *ngFor="let item of players" cdkDrag>{{item | json}}</div>
+        <div class="example-box" *ngFor="let item of offCourt" cdkDrag>{{item | json}}</div>
       </div>
     </div>
   </div>

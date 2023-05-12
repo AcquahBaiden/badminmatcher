@@ -113,6 +113,9 @@ export class GameBoardComponent implements OnInit {
 
   generateMatchUps(): void{
     const split = this.splitIntoChunk(this.players,2)
+    this.offCourt = Array(split[0])
+    //@ts-ignore.
+    this.onCourt = split[1]
     console.log('split:',split)
   }
 
@@ -120,7 +123,7 @@ export class GameBoardComponent implements OnInit {
 
 
   splitIntoChunk(arr:Player[], chunk):Player[] {
-    const bigarray:Player[]  = []
+    const bigarray:any  = []
   while(arr.length > 0) {
       let tempArray;
       tempArray = arr.splice(0, chunk);
