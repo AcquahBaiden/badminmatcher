@@ -17,6 +17,8 @@ export class GameBoardComponent implements OnInit {
   players: Player[]
   offCourt: Player[]
   onCourt: Player[]
+  onCourt: Player[]
+
   
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
