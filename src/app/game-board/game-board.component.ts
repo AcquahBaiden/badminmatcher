@@ -17,6 +17,7 @@ export class GameBoardComponent implements OnInit {
   players: Player[]
   offCourt: Player[]
   onCourt: Player[]
+  number_of_courts: Number = 3
 
   
   drop(event: CdkDragDrop<string[]>) {
@@ -55,11 +56,17 @@ export class GameBoardComponent implements OnInit {
   }
 
   generateMatchUps(): void{
+    //chunks of two,
+    //set number of courts
     const split = this.splitIntoChunk(this.players,2)
     //@ts-ignore.
     this.offCourt = split[0]
     //@ts-ignore.
     this.onCourt = split[1]
+    console.log('splitlength', split.length)
+    for(let i=0; i < split.length; i++){
+      console.log('i:', i)
+    }
     console.log('split:',split)
   }
 
