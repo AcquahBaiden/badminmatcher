@@ -25,3 +25,14 @@
     <div class="example-box" *ngFor="let item of offCourt" cdkDrag>{{item | json}}</div>
   </div>
 </div>
+
+
+<div>
+  <p>Here we go</p>
+  <div *ngFor="let item of split; let i = index">
+    <p>Court {{i}}</p>
+    <div *ngFor="let n of item; let i = index">
+      {{item.name}} {{item.ranking}}
+    </div>
+  </div>
+</div>

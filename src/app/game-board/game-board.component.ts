@@ -14,6 +14,7 @@ import { Game } from '../interfaces/game.interface';
 export class GameBoardComponent implements OnInit {
   gameId:string
   game: Game
+  split: any[]
   players: Player[]
   offCourt: Player[]
   onCourt: Player[]
@@ -59,6 +60,7 @@ export class GameBoardComponent implements OnInit {
     //chunks of two,
     //set number of courts
     const split = this.splitIntoChunk(this.players,2)
+    this.split = split
     //@ts-ignore.
     this.offCourt = split[0]
     //@ts-ignore.
